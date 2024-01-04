@@ -5,6 +5,7 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { DarktMode, LightMode } from "./components/Utility/AppMode";
 import { useState } from "react";
+import Footer from "./components/Utility/Footer";
 
 function App() {
   const [mode, setMode] = useState(
@@ -28,11 +29,12 @@ function App() {
       <BrowserRouter>
         <NavBar setMode={setMode} />
         <div className=" mt-[56px] md:mt-[64px] xl:mt-[64px]">
-        {/* <div> */}
+          {/* <div> */}
           <Routes>
             <Route path="/" element={<Home />} />
           </Routes>
         </div>
+        <Footer />
       </BrowserRouter>
     </ThemeProvider>
   );
