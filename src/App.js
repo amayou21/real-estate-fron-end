@@ -6,6 +6,7 @@ import { CssBaseline } from "@mui/material";
 import { DarktMode, LightMode } from "./components/Utility/AppMode";
 import { useState } from "react";
 import Footer from "./components/Utility/Footer";
+import HousePage from "./pages/housePage/housePage";
 
 function App() {
   const [mode, setMode] = useState(
@@ -32,6 +33,7 @@ function App() {
           {/* <div> */}
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/houses" element={<HousePage/>}/>
           </Routes>
         </div>
         <Footer />

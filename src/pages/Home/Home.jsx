@@ -1,9 +1,9 @@
 import React from "react";
 import HSlide from "../../components/Home/HSlider";
 import CategoryContainer from "../../components/category/categoryContainer";
-import SubHouseCardContainer from "../../components/House/subHouseCardContainer";
-import SubLandCardContainer from "../../components/land/subLandCardContainer";
-import SubStockCardContainer from "../../components/stock/subStockCardContainer";
+import SubHouseCardContainer from "../../components/Home/subHouseCardContainer";
+import SubLandCardContainer from "../../components/Home/subLandCardContainer";
+import SubStockCardContainer from "../../components/Home/subStockCardContainer";
 
 const Home = () => {
   return (
