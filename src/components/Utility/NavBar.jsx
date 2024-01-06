@@ -14,7 +14,16 @@ import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useTheme } from "@emotion/react";
-import { Link } from "@mui/material";
+import { Button, Link, MenuList } from "@mui/material";
+
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+// rent
+import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
+// sell
+import SellIcon from "@mui/icons-material/Sell";
+
+// Buy
+import MonetizationOnIcon from "@mui/icons-material/MonetizationOn";
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
@@ -60,36 +69,85 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const NavBar = ({ setMode }) => {
   const theme = useTheme();
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [anchorPurchase, setAnchorPurchase] = React.useState(null);
+  const [anchorSell, setAnchorSell] = React.useState(null);
+  const [anchorRent, setAnchorRent] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+  const isPurchaseOpen = Boolean(anchorPurchase);
+  const isSellOpen = Boolean(anchorSell);
+  const isRentOpen = Boolean(anchorRent);
 
+  const mobileMenuId = "primary-search-account-menu-mobile";
+  const menuId = "primary-search-account-menu";
+  const purshaseId = "primary-search-purshase-menu";
+  const sellId = "primary-search-sell-menu";
+  const rentId = "primary-search-rent-menu";
+
+  //@desc profile menu open
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
   };
 
+  //@desc profile menu close
+  const handleMenuClose = () => {
+    setAnchorEl(null);
+    // handleMobileMenuClose();
+  };
+
+  //@desc purshase menu open
+  const handlePurchaseMenuOpen = (event) => {
+    setAnchorPurchase(event.currentTarget);
+  };
+
+  //@desc purchase menu close
+  const handlePurchaseClose = () => {
+    setAnchorPurchase(null);
+    // handleMobileMenuClose();
+  };
+
+  //@desc rent menu open
+  const handleRentMenuOpen = (event) => {
+    setAnchorRent(event.currentTarget);
+  };
+
+  //@desc Rent menu close
+  const handleRentClose = () => {
+    setAnchorRent(null);
+    // handleMobileMenuClose();
+  };
+
+  //@desc sell menu open
+  const handleSellMenuOpen = (event) => {
+    setAnchorSell(event.currentTarget);
+  };
+
+  //@desc sell menu close
+  const handleSellClose = () => {
+    setAnchorSell(null);
+    // handleMobileMenuClose();
+  };
+
+  //@desc parent menu close
   const handleMobileMenuClose = () => {
     setMobileMoreAnchorEl(null);
   };
 
-  const handleMenuClose = () => {
-    setAnchorEl(null);
-    handleMobileMenuClose();
-  };
-
+  //@desc parent menu open
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
   };
 
-  const menuId = "primary-search-account-menu";
-
+  //@desc profile menu render
   const renderMenu = (
     <Menu
       anchorEl={anchorEl}
       anchorOrigin={{
         vertical: "top",
         horizontal: "right",
+        // margin:"auto"
       }}
       id={menuId}
       keepMounted
@@ -107,8 +165,100 @@ const NavBar = ({ setMode }) => {
     </Menu>
   );
 
-  const mobileMenuId = "primary-search-account-menu-mobile";
+  //@desc purchase menu render
+  const PurshasRenderMoenu = (
+    <Menu
+      anchorEl={anchorPurchase}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+        // margin:"auto"
+      }}
+      id={purshaseId}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      open={isPurchaseOpen}
+      onClose={handlePurchaseClose}
+      // sx={{width:2212}}
+    >
+      <Link href={"/buy-home"} underline="none" color="inhiret">
+        <MenuItem onClick={handlePurchaseClose}>purchase home</MenuItem>
+      </Link>
+      <Link href={"/buy-land"} underline="none" color="inhiret">
+        <MenuItem onClick={handlePurchaseClose}>purchase land</MenuItem>
+      </Link>
+      <Link href={"/buy-stock"} underline="none" color="inhiret">
+        <MenuItem onClick={handlePurchaseClose}>purchase stock</MenuItem>
+      </Link>
+    </Menu>
+  );
 
+  //@desc sell menu render
+  const SellRenderMoenu = (
+    <Menu
+      anchorEl={anchorSell}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+        // margin:"auto"
+      }}
+      id={sellId}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      open={isSellOpen}
+      onClose={handleSellClose}
+      // sx={{width:2212}}
+    >
+      <Link href={"/sell-home"} underline="none" color="inhiret">
+        <MenuItem onClick={handleSellClose}>sell home</MenuItem>
+      </Link>
+      <Link href={"/sell-land"} underline="none" color="inhiret">
+        <MenuItem onClick={handleSellClose}>sell land</MenuItem>
+      </Link>
+      <Link href={"/sell-stock"} underline="none" color="inhiret">
+        <MenuItem onClick={handleSellClose}>sell stock</MenuItem>
+      </Link>
+    </Menu>
+  );
+
+  //@desc rent menu render
+  const RentRenderMoenu = (
+    <Menu
+      anchorEl={anchorRent}
+      anchorOrigin={{
+        vertical: "top",
+        horizontal: "right",
+        // margin:"auto"
+      }}
+      id={rentId}
+      keepMounted
+      transformOrigin={{
+        vertical: "top",
+        horizontal: "right",
+      }}
+      open={isRentOpen}
+      onClose={handleRentClose}
+      // sx={{width:2212}}
+    >
+      <Link href={"/rent-land"} underline="none" color="inhiret">
+        <MenuItem onClick={handleRentClose}>rent home</MenuItem>
+      </Link>
+      <Link href={"/rent-land"} underline="none" color="inhiret">
+        <MenuItem onClick={handleRentClose}>rent land</MenuItem>
+      </Link>
+      <Link href={"/rent-stock"} underline="none" color="inhiret">
+        <MenuItem onClick={handleRentClose}>rent stock</MenuItem>
+      </Link>
+    </Menu>
+  );
+
+  //@desc mobile menu render
   const renderMobileMenu = (
     <Menu
       anchorEl={mobileMoreAnchorEl}
@@ -126,33 +276,82 @@ const NavBar = ({ setMode }) => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      {/* <Link href={"/cart"} underline="none" color="inhiret">
-        <MenuItem>
+      <MenuList sx={{ width: 220, marginRight: 0 }}>
+        <Link href={"/cart"} underline="none" color="inhiret">
+          <MenuItem>
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="inherit"
+            >
+              <Badge badgeContent={2} color="error">
+                <ShoppingCart />
+              </Badge>
+            </IconButton>
+            <p>Cart </p>
+          </MenuItem>
+        </Link>
+
+        <MenuItem onClick={handleProfileMenuOpen}>
           <IconButton
             size="large"
-            aria-label="show 4 new mails"
+            aria-label="account of current user"
+            aria-controls="primary-search-account-menu"
+            aria-haspopup="true"
             color="inherit"
           >
-            <Badge badgeContent={4} color="error">
-              <ShoppingCart />
-            </Badge>
+            <AccountCircle />
           </IconButton>
-          <p>Cart</p>
+          <p>Profile</p>
+          <NavigateNextIcon />
         </MenuItem>
-      </Link> */}
 
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          size="large"
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+        {/* <Link href={"/buy"} underline="none" color="inhiret"> */}
+        <MenuItem onClick={handlePurchaseMenuOpen}>
+          <IconButton
+            size="large"
+            aria-label="purchase"
+            aria-controls="primary-search-purshase-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            {/* <Badge badgeContent={2} color="error"> */}
+            <MonetizationOnIcon />
+            {/* </Badge> */}
+          </IconButton>
+          <p>Purchase</p>
+          <NavigateNextIcon />
+        </MenuItem>
+        {/* </Link> */}
+
+        <MenuItem onClick={handleRentMenuOpen}>
+          <IconButton
+            size="large"
+            aria-label="rent"
+            aria-controls="primary-search-rent-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <SupervisedUserCircleIcon />
+          </IconButton>
+          <p>Rent</p>
+          <NavigateNextIcon />
+        </MenuItem>
+
+        <MenuItem onClick={handleSellMenuOpen}>
+          <IconButton
+            size="large"
+            aria-label="sell"
+            aria-controls="primary-search-sell-menu"
+            aria-haspopup="true"
+            color="inherit"
+          >
+            <SellIcon />
+          </IconButton>
+          <p>Sell</p>
+          <NavigateNextIcon />
+        </MenuItem>
+      </MenuList>
     </Menu>
   );
 
@@ -269,6 +468,9 @@ const NavBar = ({ setMode }) => {
       </AppBar>
       {renderMobileMenu}
       {renderMenu}
+      {PurshasRenderMoenu}
+      {SellRenderMoenu}
+      {RentRenderMoenu}
     </Box>
   );
 };

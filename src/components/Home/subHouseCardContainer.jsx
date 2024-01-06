@@ -18,7 +18,7 @@ const SubHouseCardContainer = () => {
           image={rentHome}
           pathText="/houses"
         />
-        <SubCard title="Rent a home" btntitle="find rentals" image={img4} />
+        <SubCard title="Rent a home" btntitle="find rentals" pathText="/houses" image={img4} />
         <SubCard
           title="Sell a home"
           btntitle="see your options"
