@@ -15,7 +15,9 @@ import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useTheme } from "@emotion/react";
 import { Button, Link, MenuList } from "@mui/material";
-
+import ContactsIcon from "@mui/icons-material/Contacts";
+import InfoIcon from "@mui/icons-material/Info";
+import HelpIcon from "@mui/icons-material/Help";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 // rent
 import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
@@ -306,7 +308,6 @@ const NavBar = ({ setMode }) => {
           <NavigateNextIcon />
         </MenuItem>
 
-        {/* <Link href={"/buy"} underline="none" color="inhiret"> */}
         <MenuItem onClick={handlePurchaseMenuOpen}>
           <IconButton
             size="large"
@@ -322,7 +323,6 @@ const NavBar = ({ setMode }) => {
           <p>Purchase</p>
           <NavigateNextIcon />
         </MenuItem>
-        {/* </Link> */}
 
         <MenuItem onClick={handleRentMenuOpen}>
           <IconButton
@@ -351,6 +351,43 @@ const NavBar = ({ setMode }) => {
           <p>Sell</p>
           <NavigateNextIcon />
         </MenuItem>
+
+        <Link href={"/contact"} underline="none" color="inhiret">
+          <MenuItem className="flex items-center">
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="inherit"
+            >
+              <ContactsIcon />
+            </IconButton>
+            <p>Contact </p>
+          </MenuItem>
+        </Link>
+        <Link href={"/about"} underline="none" color="inhiret">
+          <MenuItem className="flex items-center">
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="inherit"
+            >
+              <InfoIcon />
+            </IconButton>
+            <p>About </p>
+          </MenuItem>
+        </Link>
+        <Link href={"/help"} underline="none" color="inhiret">
+          <MenuItem className="flex items-center">
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="inherit"
+            >
+              <HelpIcon />
+            </IconButton>
+            <p>Help </p>
+          </MenuItem>
+        </Link>
       </MenuList>
     </Menu>
   );
@@ -363,17 +400,84 @@ const NavBar = ({ setMode }) => {
           className={`${theme.palette.AppBarbackgroundColor}`}
         >
           {/* 1 */}
-          <Link href={"/"} underline="none" color="inhiret">
-            <Typography
-              variant="h6"
-              noWrap={false}
-              component="div"
-              marginRight={1}
-            >
-              Reale Estate
-            </Typography>
-          </Link>
+          <Box>
+            <Link href={"/"} underline="none" color="inhiret">
+              <Typography
+                variant="h6"
+                noWrap={false}
+                component="div"
+                marginRight={1}
+              >
+                Reale Estate
+              </Typography>
+            </Link>
+          </Box>
+          <Box
+            sx={{
+              display: {
+                xs: "none",
+                md: "flex",
+                justifyContent: "space-around",
+              },
+            }}
+            className="items-center"
+          >
+            {/* <Link href={"/"} underline="none" color="inhiret">
+              <Typography
+                variant="h6"
+                noWrap={false}
+                component="div"
+                marginRight={1}
+              >
+                Reale Estate
+              </Typography>
+            </Link> */}
 
+            <Link href={"/buy"} underline="none" color="inhiret">
+              <MenuItem className="flex items-center">
+                {/* <IconButton
+                  size="large"
+                  aria-label="show 4 new mails"
+                  color="inherit"
+                > */}
+                {/* <Badge badgeContent={2} color="error"> */}
+                {/* <MonetizationOnIcon /> */}
+                {/* </Badge> */}
+                {/* </IconButton> */}
+                <p>Buy </p>
+              </MenuItem>
+            </Link>
+
+            <Link href={"/rent"} underline="none" color="inhiret">
+              <MenuItem className="flex items-center">
+                {/* <IconButton
+                  size="large"
+                  aria-label="show 4 new mails"
+                  color="inherit"
+                > */}
+                {/* <Badge badgeContent={2} color="error"> */}
+                {/* <SupervisedUserCircleIcon /> */}
+                {/* </Badge> */}
+                {/* </IconButton> */}
+                <p>Rent </p>
+              </MenuItem>
+            </Link>
+
+            <Link href={"/sell"} underline="none" color="inhiret">
+              <MenuItem className="flex items-center">
+                {/* <IconButton
+                  size="large"
+                  aria-label="show 4 new mails"
+                  color="inherit"
+                > */}
+                {/* <Badge badgeContent={2} color="error"> */}
+                {/* <SellIcon /> */}
+                {/* </Badge> */}
+                {/* </IconButton> */}
+                <p>Sell </p>
+              </MenuItem>
+            </Link>
+          </Box>
           {/* 2 */}
           <Search>
             <SearchIconWrapper>
@@ -384,21 +488,46 @@ const NavBar = ({ setMode }) => {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
-
+          <Box
+            sx={{
+              display: {
+                xs: "none",
+                md: "flex",
+                justifyContent: "space-around",
+              },
+            }}
+            className="items-center"
+          >
+            <Link href={"/contact"} underline="none" color="inhiret">
+              <MenuItem className="flex items-center">
+                {/* <SellIcon /> */}
+                <p>Contact </p>
+              </MenuItem>
+            </Link>
+            <Link href={"/about"} underline="none" color="inhiret">
+              <MenuItem className="flex items-center">
+                {/* <SellIcon /> */}
+                <p>About </p>
+              </MenuItem>
+            </Link>
+            <Link href={"/help"} underline="none" color="inhiret">
+              <MenuItem className="flex items-center">
+                {/* <SellIcon /> */}
+                <p>Help </p>
+              </MenuItem>
+            </Link>
+          </Box>
           {/* 3 */}
-          <Box sx={{ display: { xs: "none", md: "flex" } }}>
-            {/* <Link href={"/cart"} underline="none" color="inhiret">
-              <IconButton
-                size="large"
-                aria-label="show 4 new mails"
-                color="inherit"
-              >
-                <Badge badgeContent={4} color="error">
-                  <ShoppingCart />
-                </Badge>
-              </IconButton>
-            </Link> */}
-
+          <Box
+            sx={{
+              display: {
+                xs: "none",
+                md: "flex",
+                justifyContent: "space-around",
+              },
+            }}
+            className="items-center"
+          >
             <IconButton
               size="large"
               edge="end"

@@ -1,6 +1,6 @@
 export const LightMode = {
 
-    AppBarbackgroundColor: "bg-gradient-to-r from-rose-400 to-red-500",
+    AppBarbackgroundColor: "bg-green-to-r from-amber-700 to-green-700",
     slidBackgroundColor: "bg-gradient-to-r from-neutral-300 to-stone-400",
     btnBgColor: 'bg-gradient-to-r from-cyan-500 to-blue-500',
     prodyctCardbg: 'bg-gradient-to-r from-slate-50 to-fuchsia-50',
