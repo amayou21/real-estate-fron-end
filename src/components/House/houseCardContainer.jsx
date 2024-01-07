@@ -7,7 +7,7 @@ const HouseCardContainer = () => {
   return (
     <Container className="mt-8 ">
       <div className="my-4">
-      <FilterBar />
+      <FilterBar ProductType="home" />
 
       </div>
       <div className="grid grid-cols-1 md:grid-cols-3 sm:grid-cols-2 xl:grid-cols-4 gap-3 my-4 ">

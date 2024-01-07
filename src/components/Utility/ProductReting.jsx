@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Grid, Typography } from "@mui/material";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
-import UnstyledTextareaAutosize from "../Utility/textArea";
+import UnstyledTextareaAutosize from "./textArea";
 import OtherClientRating from "./OtherClientRating";
 const ProductReting = () => {
   return (

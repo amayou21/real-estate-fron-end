@@ -68,7 +68,7 @@ const UnstyledTextareaAutosize = () => {
       <div>
         <Textarea
           aria-label="empty textarea"
-          placeholder="Empty"
+          placeholder="Add comment"
           comment={val}
         />
       </div>

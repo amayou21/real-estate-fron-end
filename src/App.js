@@ -9,6 +9,7 @@ import Footer from "./components/Utility/Footer";
 import HousePage from "./pages/housePage/housePage";
 import LandPage from "./pages/landPage/landPage";
 import HouseDetailsContainer from "./components/House/HouseDetailsContainer";
+import LandDetailsContainer from "./components/land/LandDetailsContainer";
 
 function App() {
   const [mode, setMode] = useState(
@@ -38,6 +39,7 @@ function App() {
             <Route path="/houses" element={<HousePage />} />
             <Route path="/house/:id" element={<HouseDetailsContainer />} />
             <Route path="/lands" element={<LandPage />} />
+            <Route path="/land/:id" element={<LandDetailsContainer />} />
           </Routes>
         </div>
         <Footer />

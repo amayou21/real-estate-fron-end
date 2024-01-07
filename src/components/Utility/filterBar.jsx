@@ -19,7 +19,7 @@ import {
   TextField,
 } from "@mui/material";
 
-const FilterBar = () => {
+const FilterBar = ({ ProductType }) => {
   const [option, setoption] = useState("");
   const [openPrice, setOpenPrice] = useState(false);
   const [openProperty, setOpenProperty] = useState(false);
@@ -65,7 +65,9 @@ const FilterBar = () => {
           onChange={handleChange}
         >
           <MenuItem value="for-ale">For sale</MenuItem>
-          <MenuItem value="for-rent">For rent</MenuItem>
+          {ProductType === "home" ? (
+            <MenuItem value="for-rent">For rent</MenuItem>
+          ) : null}
           <MenuItem value="sold">sold</MenuItem>
         </Select>
       </FormControl>
@@ -121,119 +123,123 @@ const FilterBar = () => {
         </Dialog>
       </div>
 
-      <div className="ml-2">
-        <Button
-          className="h-10"
-          variant="outlined"
-          color="inherit"
-          onClick={handlePropertyClickOpen}
-          sx={{ mt: 3 }}
-        >
-          Props
-        </Button>
+      {ProductType === "home" ? (
+        <div className="ml-2">
+          <Button
+            className="h-10"
+            variant="outlined"
+            color="inherit"
+            onClick={handlePropertyClickOpen}
+            sx={{ mt: 3 }}
+          >
+            Props
+          </Button>
 
-        <Dialog
-          //   disableEscapeKeyDown
-          open={openProperty}
-          onClose={handlePropertyClose}
-          sx={{ width: "100%" }}
-        >
-          <DialogTitle>Number of Bedrooms</DialogTitle>
-          <DialogContent sx={{ width: "100%" }}>
-            <Box
-              component="form"
-              sx={{ flexWrap: "wrap" }}
-              className="items-center flex"
-            >
-              <Stack spacing={2}>
-                <b>Bedrooms</b>
-                <Pagination count={5} variant="outlined" shape="rounded" />
-              </Stack>
-            </Box>
-          </DialogContent>
+          <Dialog
+            //   disableEscapeKeyDown
+            open={openProperty}
+            onClose={handlePropertyClose}
+            sx={{ width: "100%" }}
+          >
+            <DialogTitle>Number of Bedrooms</DialogTitle>
+            <DialogContent sx={{ width: "100%" }}>
+              <Box
+                component="form"
+                sx={{ flexWrap: "wrap" }}
+                className="items-center flex"
+              >
+                <Stack spacing={2}>
+                  <b>Bedrooms</b>
+                  <Pagination count={5} variant="outlined" shape="rounded" />
+                </Stack>
+              </Box>
+            </DialogContent>
 
-          <DialogTitle sx={{ bgcolor: "primary" }}>
-            Number of Bathrooms
-          </DialogTitle>
-          <DialogContent sx={{ width: "100%" }}>
-            <Box
-              component="form"
-              sx={{ flexWrap: "wrap" }}
-              className="items-center flex"
-            >
-              <Stack spacing={2}>
-                <b>Bathrooms</b>
-                <Pagination count={5} variant="outlined" shape="rounded" />
-              </Stack>
-            </Box>
-          </DialogContent>
-          <DialogActions>
-            <Button onClick={handlePropertyClose}>Cancel</Button>
-            <Button onClick={handlePropertyClose}>Ok</Button>
-          </DialogActions>
-        </Dialog>
-      </div>
+            <DialogTitle sx={{ bgcolor: "primary" }}>
+              Number of Bathrooms
+            </DialogTitle>
+            <DialogContent sx={{ width: "100%" }}>
+              <Box
+                component="form"
+                sx={{ flexWrap: "wrap" }}
+                className="items-center flex"
+              >
+                <Stack spacing={2}>
+                  <b>Bathrooms</b>
+                  <Pagination count={5} variant="outlined" shape="rounded" />
+                </Stack>
+              </Box>
+            </DialogContent>
+            <DialogActions>
+              <Button onClick={handlePropertyClose}>Cancel</Button>
+              <Button onClick={handlePropertyClose}>Ok</Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+      ) : null}
 
-      <div className="ml-2">
-        <Button
-          className="h-10"
-          variant="outlined"
-          color="inherit"
-          onClick={homeTypeClickOpen}
-          sx={{ mt: 3 }}
-        >
-          type
-        </Button>
+      {ProductType === "home" ? (
+        <div className="ml-2">
+          <Button
+            className="h-10"
+            variant="outlined"
+            color="inherit"
+            onClick={homeTypeClickOpen}
+            sx={{ mt: 3 }}
+          >
+            type
+          </Button>
 
-        <Dialog
-          open={homeType}
-          onClose={homeTypeClickClose}
-          sx={{ width: "100%" }}
-        >
-          <DialogTitle>Home Type</DialogTitle>
-          <DialogContent sx={{ width: "100%" }}>
-            <FormGroup>
-              <FormControlLabel
-                control={<Checkbox defaultChecked />}
-                label="Houses"
-              />
-              <FormControlLabel
-                control={<Checkbox defaultChecked />}
-                label="Apartments/Condos/Co-ops"
-              />
-              <FormControlLabel
-                control={<Checkbox defaultChecked />}
-                label="Townhomes"
-              />
-            </FormGroup>
-          </DialogContent>
-
-          <DialogTitle>Space</DialogTitle>
-          <DialogContent sx={{ width: "100%" }}>
-            <Box
-              component="form"
-              sx={{ flexWrap: "wrap" }}
-              className="items-center flex"
-            >
+          <Dialog
+            open={homeType}
+            onClose={homeTypeClickClose}
+            sx={{ width: "100%" }}
+          >
+            <DialogTitle>Home Type</DialogTitle>
+            <DialogContent sx={{ width: "100%" }}>
               <FormGroup>
                 <FormControlLabel
                   control={<Checkbox defaultChecked />}
-                  label="Entire place"
+                  label="Houses"
                 />
                 <FormControlLabel
                   control={<Checkbox defaultChecked />}
-                  label="Room"
+                  label="Apartments/Condos/Co-ops"
+                />
+                <FormControlLabel
+                  control={<Checkbox defaultChecked />}
+                  label="Townhomes"
                 />
               </FormGroup>
-            </Box>
-          </DialogContent>
+            </DialogContent>
 
-          <DialogActions>
-            <Button onClick={homeTypeClickClose}>Cancel</Button>
-            <Button onClick={homeTypeClickClose}>Ok</Button>
-          </DialogActions>
-        </Dialog>
-      </div>
+            <DialogTitle>Space</DialogTitle>
+            <DialogContent sx={{ width: "100%" }}>
+              <Box
+                component="form"
+                sx={{ flexWrap: "wrap" }}
+                className="items-center flex"
+              >
+                <FormGroup>
+                  <FormControlLabel
+                    control={<Checkbox defaultChecked />}
+                    label="Entire place"
+                  />
+                  <FormControlLabel
+                    control={<Checkbox defaultChecked />}
+                    label="Room"
+                  />
+                </FormGroup>
+              </Box>
+            </DialogContent>
+
+            <DialogActions>
+              <Button onClick={homeTypeClickClose}>Cancel</Button>
+              <Button onClick={homeTypeClickClose}>Ok</Button>
+            </DialogActions>
+          </Dialog>
+        </div>
+      ) : null}
     </div>
   );
 };

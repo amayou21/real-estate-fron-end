@@ -1,19 +1,18 @@
-import { Container } from "@mui/material";
 import React from "react";
-import HouseGallery from "./HouseGallery";
+import LandGallery from "./LandGallery";
+import { Container } from "@mui/material";
 import ProductReting from "../Utility/ProductReting";
 import HomeLocation from "../Utility/homeLocation";
-
-const HouseDetailsContainer = () => {
+const LandDetailsContainer = () => {
   return (
     <Container>
-      <HouseGallery />
+      <LandGallery />
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-2">
-        <HomeLocation title='Home' />
+        <HomeLocation title="Land" />
         <ProductReting />
       </div>
     </Container>
   );
 };
 
-export default HouseDetailsContainer;
+export default LandDetailsContainer;

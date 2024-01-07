@@ -40,7 +40,7 @@ const LandCard = () => {
   return (
     <Paper className="rounded-md">
       <div>
-        <Link to="/product/:id">
+        <Link to="/land/:id">
           <img
             className="w-full" // p-2
             src={img2}
