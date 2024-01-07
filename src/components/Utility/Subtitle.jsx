@@ -14,7 +14,6 @@ const Subtitle = ({ title, btntitle, pathText }) => {
           <div>{title}</div>
           <Link to={`${pathText}`}>
             <Button
-              // href=
               className={`${theme.palette.btnBgColor}`}
               variant={`${theme.palette.btnVariant}`}
               color={theme.palette.mode === "dark" ? "secondary" : "primary"}

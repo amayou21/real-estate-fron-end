@@ -13,9 +13,18 @@ const SubLandCardContainer = () => {
     <Container className="mt-7 mb-7">
       <Subtitle title="Lands" btntitle="show more" />
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-3 gap-6">
-        <SubcategoryInfoCard image={land}/>
-        <SubCard title="Buy a land" btntitle="Browse land" image={land2} />
-        <SubCard title="Sell a land" btntitle="see your options" image={land3} />
+        <SubcategoryInfoCard image={land} />
+        <SubCard
+          title="Buy a land"
+          btntitle="Browse land"
+          image={land2}
+          pathText="/lands"
+        />
+        <SubCard
+          title="Sell a land"
+          btntitle="see your options"
+          image={land3}
+        />
       </div>
     </Container>
   );

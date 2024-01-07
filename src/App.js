@@ -7,6 +7,8 @@ import { DarktMode, LightMode } from "./components/Utility/AppMode";
 import { useState } from "react";
 import Footer from "./components/Utility/Footer";
 import HousePage from "./pages/housePage/housePage";
+import LandPage from "./pages/landPage/landPage";
+import HouseDetailsContainer from "./components/House/HouseDetailsContainer";
 
 function App() {
   const [mode, setMode] = useState(
@@ -33,7 +35,9 @@ function App() {
           {/* <div> */}
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/houses" element={<HousePage/>}/>
+            <Route path="/houses" element={<HousePage />} />
+            <Route path="/house/:id" element={<HouseDetailsContainer />} />
+            <Route path="/lands" element={<LandPage />} />
           </Routes>
         </div>
         <Footer />

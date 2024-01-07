@@ -422,58 +422,21 @@ const NavBar = ({ setMode }) => {
             }}
             className="items-center"
           >
-            {/* <Link href={"/"} underline="none" color="inhiret">
-              <Typography
-                variant="h6"
-                noWrap={false}
-                component="div"
-                marginRight={1}
-              >
-                Reale Estate
-              </Typography>
-            </Link> */}
 
             <Link href={"/buy"} underline="none" color="inhiret">
               <MenuItem className="flex items-center">
-                {/* <IconButton
-                  size="large"
-                  aria-label="show 4 new mails"
-                  color="inherit"
-                > */}
-                {/* <Badge badgeContent={2} color="error"> */}
-                {/* <MonetizationOnIcon /> */}
-                {/* </Badge> */}
-                {/* </IconButton> */}
                 <p>Buy </p>
               </MenuItem>
             </Link>
 
             <Link href={"/rent"} underline="none" color="inhiret">
               <MenuItem className="flex items-center">
-                {/* <IconButton
-                  size="large"
-                  aria-label="show 4 new mails"
-                  color="inherit"
-                > */}
-                {/* <Badge badgeContent={2} color="error"> */}
-                {/* <SupervisedUserCircleIcon /> */}
-                {/* </Badge> */}
-                {/* </IconButton> */}
                 <p>Rent </p>
               </MenuItem>
             </Link>
 
             <Link href={"/sell"} underline="none" color="inhiret">
               <MenuItem className="flex items-center">
-                {/* <IconButton
-                  size="large"
-                  aria-label="show 4 new mails"
-                  color="inherit"
-                > */}
-                {/* <Badge badgeContent={2} color="error"> */}
-                {/* <SellIcon /> */}
-                {/* </Badge> */}
-                {/* </IconButton> */}
                 <p>Sell </p>
               </MenuItem>
             </Link>
@@ -500,19 +463,16 @@ const NavBar = ({ setMode }) => {
           >
             <Link href={"/contact"} underline="none" color="inhiret">
               <MenuItem className="flex items-center">
-                {/* <SellIcon /> */}
                 <p>Contact </p>
               </MenuItem>
             </Link>
             <Link href={"/about"} underline="none" color="inhiret">
               <MenuItem className="flex items-center">
-                {/* <SellIcon /> */}
                 <p>About </p>
               </MenuItem>
             </Link>
             <Link href={"/help"} underline="none" color="inhiret">
               <MenuItem className="flex items-center">
-                {/* <SellIcon /> */}
                 <p>Help </p>
               </MenuItem>
             </Link>

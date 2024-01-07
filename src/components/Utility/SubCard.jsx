@@ -1,7 +1,5 @@
 import { Button, Paper } from "@mui/material";
 import React from "react";
-import rentHome from "../../images/rentHome.jpg";
-import Subtitle from "./Subtitle";
 import ReadMoreSharpIcon from "@mui/icons-material/ReadMoreSharp";
 import ShareIcon from "@mui/icons-material/Share";
 
@@ -38,7 +36,6 @@ const SubCard = ({ title, image, btntitle, pathText }) => {
       <Link to={`${pathText}`} className="w-[100%] ">
         <div className="flex justify-center w-[100%]">
           <Button
-            // href=
             className={`${theme.palette.btnBgColor}`}
             variant={`${theme.palette.btnVariant}`}
             color={theme.palette.mode === "dark" ? "secondary" : "primary"}
@@ -54,7 +51,6 @@ const SubCard = ({ title, image, btntitle, pathText }) => {
           </Button>
         </div>
       </Link>
-      {/* </div> */}
     </Paper>
   );
 };
