@@ -10,6 +10,10 @@ import HousePage from "./pages/housePage/housePage";
 import LandPage from "./pages/landPage/landPage";
 import HouseDetailsContainer from "./components/House/HouseDetailsContainer";
 import LandDetailsContainer from "./components/land/LandDetailsContainer";
+import Favorites from "./components/Utility/Favorites";
+import LoginPage from "./pages/Auth/LoginPage";
+import RegisterPage from "./pages/Auth/RegisterPage";
+import OrdersPage from "./pages/Order/OrdersPage";
 
 function App() {
   const [mode, setMode] = useState(
@@ -40,6 +44,14 @@ function App() {
             <Route path="/house/:id" element={<HouseDetailsContainer />} />
             <Route path="/lands" element={<LandPage />} />
             <Route path="/land/:id" element={<LandDetailsContainer />} />
+            <Route path="/favorites" element={<Favorites />} />
+            <Route path="/order" element={<OrdersPage />} />
+
+            {/* User auth */}
+            <Route path="/login" element={<LoginPage />} />
+            <Route path="/register" element={<RegisterPage />} />
+
+
           </Routes>
         </div>
         <Footer />

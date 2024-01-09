@@ -3,7 +3,6 @@ import React from "react";
 import HouseGallery from "./HouseGallery";
 import ProductReting from "../Utility/ProductReting";
 import HomeLocation from "../Utility/homeLocation";
-
 const HouseDetailsContainer = () => {
   return (
     <Container>

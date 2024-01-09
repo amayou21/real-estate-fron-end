@@ -1,9 +1,10 @@
 import React from "react";
-import { Container, Grid, Typography } from "@mui/material";
+import { Avatar, Container, Grid, IconButton, Typography } from "@mui/material";
 import Rating from "@mui/material/Rating";
 import Stack from "@mui/material/Stack";
 import UnstyledTextareaAutosize from "./textArea";
 import OtherClientRating from "./OtherClientRating";
+import img4 from "../../images/img4.jpg"
 const ProductReting = () => {
   return (
     <Grid item sm={12} xs={12} lg={12} md={12} className="flex items-end">
@@ -18,6 +19,9 @@ const ProductReting = () => {
 
         <div className="flex items-center m-2 ">
           <Typography variant="h5" color="inherit">
+            <IconButton>
+              <Avatar src={img4}/>
+            </IconButton>
             Current User Name
           </Typography>
           <Stack spacing={1} className="ml-3">

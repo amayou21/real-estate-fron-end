@@ -7,18 +7,18 @@ import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import InputBase from "@mui/material/InputBase";
-import Badge from "@mui/material/Badge";
 import MenuItem from "@mui/material/MenuItem";
 import Menu from "@mui/material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import AccountCircle from "@mui/icons-material/AccountCircle";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useTheme } from "@emotion/react";
-import { Button, Link, MenuList } from "@mui/material";
+import { Badge, Link, MenuList } from "@mui/material";
 import ContactsIcon from "@mui/icons-material/Contacts";
 import InfoIcon from "@mui/icons-material/Info";
 import HelpIcon from "@mui/icons-material/Help";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import FavoriteIcon from "@mui/icons-material/Favorite";
 // rent
 import SupervisedUserCircleIcon from "@mui/icons-material/SupervisedUserCircle";
 // sell
@@ -279,7 +279,7 @@ const NavBar = ({ setMode }) => {
       onClose={handleMobileMenuClose}
     >
       <MenuList sx={{ width: 220, marginRight: 0 }}>
-        <Link href={"/cart"} underline="none" color="inhiret">
+        <Link href={"/order"} underline="none" color="inhiret">
           <MenuItem>
             <IconButton
               size="large"
@@ -351,6 +351,18 @@ const NavBar = ({ setMode }) => {
           <p>Sell</p>
           <NavigateNextIcon />
         </MenuItem>
+        <Link href={"/favorites"} underline="none" color="inhiret">
+          <MenuItem className="flex items-center">
+            <IconButton
+              size="large"
+              aria-label="show 4 new mails"
+              color="inherit"
+            >
+              <FavoriteIcon />
+            </IconButton>
+            <p>Favorites </p>
+          </MenuItem>
+        </Link>
 
         <Link href={"/contact"} underline="none" color="inhiret">
           <MenuItem className="flex items-center">
@@ -412,6 +424,7 @@ const NavBar = ({ setMode }) => {
               </Typography>
             </Link>
           </Box>
+
           <Box
             sx={{
               display: {
@@ -422,7 +435,6 @@ const NavBar = ({ setMode }) => {
             }}
             className="items-center"
           >
-
             <Link href={"/buy"} underline="none" color="inhiret">
               <MenuItem className="flex items-center">
                 <p>Buy </p>
@@ -441,6 +453,7 @@ const NavBar = ({ setMode }) => {
               </MenuItem>
             </Link>
           </Box>
+
           {/* 2 */}
           <Search>
             <SearchIconWrapper>
@@ -451,6 +464,7 @@ const NavBar = ({ setMode }) => {
               inputProps={{ "aria-label": "search" }}
             />
           </Search>
+
           <Box
             sx={{
               display: {
@@ -476,6 +490,11 @@ const NavBar = ({ setMode }) => {
                 <p>Help </p>
               </MenuItem>
             </Link>
+            <Link href={"/favorites"} underline="none" color="inhiret">
+              <MenuItem className="flex items-center">
+                <p>Favorites </p>
+              </MenuItem>
+            </Link>
           </Box>
           {/* 3 */}
           <Box
@@ -488,6 +507,18 @@ const NavBar = ({ setMode }) => {
             }}
             className="items-center"
           >
+            <Link href={"/order"} underline="none" color="inhiret">
+              <IconButton
+                size="large"
+                aria-label="show 4 new mails"
+                color="inherit"
+              >
+                <Badge badgeContent={4} color="error">
+                  <ShoppingCart />
+                </Badge>
+              </IconButton>
+            </Link>
+
             <IconButton
               size="large"
               edge="end"
