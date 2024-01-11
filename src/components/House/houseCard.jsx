@@ -33,6 +33,7 @@ const labels = {
 const getLabelText = (value) => {
   return labels[value];
 };
+
 const HouseCard = () => {
   const theme = useTheme();
   const [value, setValue] = useState(2.5);

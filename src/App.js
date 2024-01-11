@@ -1,10 +1,10 @@
-import { BrowserRouter, Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home/Home";
 import NavBar from "./components/Utility/NavBar";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CssBaseline } from "@mui/material";
 import { DarktMode, LightMode } from "./components/Utility/AppMode";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Footer from "./components/Utility/Footer";
 import HousePage from "./pages/housePage/housePage";
 import LandPage from "./pages/landPage/landPage";
@@ -17,6 +17,11 @@ import OrdersPage from "./pages/Order/OrdersPage";
 import AdminDashPage from "./pages/Admin/AdminDashPage";
 import Dashboard from "./components/Admin/Dashboard";
 import OrderManagementPage from "./pages/Admin/OrderManagementPage";
+import ProductManagementPage from "./pages/Admin/ProductManagementPage";
+import AddHomePage from "./pages/Admin/AddHomePage";
+import AddCategoryPage from "./pages/Admin/AddCategoryPage";
+import AddLandPage from "./pages/Admin/AddLandPage";
+import AddSeockPage from "./pages/Admin/AddStockPage";
 
 function App() {
 
@@ -34,8 +39,6 @@ function App() {
       ...(mode === "light" ? LightMode : DarktMode),
     },
   });
-
-  // const location = useLocation();
 
   // Check the pathname and conditionally render the NavBar
   const showNavBar = !window.location.pathname.startsWith('/admin');
@@ -61,16 +64,23 @@ function App() {
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
 
-            <Route path="/admin" element={<AdminDashPage />}>
+            <Route path="/admin" element={<AdminDashPage setMode={setMode} />}>
               <Route index element={<Dashboard />} />
               <Route path="order-management" element={<OrderManagementPage />} />
+              <Route path="products-management" element={<ProductManagementPage />} />
+              <Route path="add-home" element={<AddHomePage />} />
+              <Route path="add-category" element={<AddCategoryPage />} />
+
+              <Route path="add-land" element={<AddLandPage />} />
+              <Route path="add-stock" element={<AddSeockPage />} />
 
             </Route>
 
 
           </Routes>
         </div>
-        <Footer />
+        {showNavBar ? <Footer /> : null}
+
       </BrowserRouter>
     </ThemeProvider>
   );

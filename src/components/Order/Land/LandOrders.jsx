@@ -5,7 +5,7 @@ import Checkout from "../../Utility/Checkout";
 
 const LandOrders = () => {
   return (
-    <div className="flex flex-col sm:flex-col md:flex-col xl:flex-row justify-between">
+    <div className="flex p-2 flex-col sm:flex-col md:flex-col xl:flex-row justify-between">
       <div>
         <LandOrderCard />
         <LandOrderCard />

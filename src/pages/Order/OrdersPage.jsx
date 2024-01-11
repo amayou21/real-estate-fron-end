@@ -1,8 +1,5 @@
-import { Box, Container, Grid } from "@mui/material";
-// import Checkout from "./Checkout";
-// import OrderProduct from "./OrderProduct";
-import React, { useEffect, useState } from "react";
-import Tabs from "@mui/material/Tabs";
+import { Box} from "@mui/material";
+import React, {  useState } from "react";
 import Tab from "@mui/material/Tab";
 import { TabContext, TabList, TabPanel } from "@mui/lab";
 import HomeOrderPage from "./Home/HomeOrderPage";
@@ -26,15 +23,15 @@ const OrdersPage = () => {
         </TabList>
       </Box>
 
-      <TabPanel value="1">
+      <TabPanel value="1" sx={{padding:0 }}>
         <HomeOrderPage />
       </TabPanel>
 
-      <TabPanel value="2">
+      <TabPanel value="2" sx={{padding:0 }}>
         <LandOrderPage />
       </TabPanel>
 
-      <TabPanel value="3">
+      <TabPanel value="3" sx={{padding:0 }}> 
         <StockOrderPage />
       </TabPanel>
     </TabContext>

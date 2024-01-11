@@ -1,13 +1,11 @@
 import * as React from "react";
 import { Brightness4, Brightness7 } from "@mui/icons-material";
-import { styled, alpha } from "@mui/material/styles";
+import { styled } from "@mui/material/styles";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
-// import InputBase from "@mui/material/InputBase";
-// import SearchIcon from "@mui/icons-material/Search";
 import MoreIcon from "@mui/icons-material/MoreVert";
 import { useTheme } from "@emotion/react";
 import {
@@ -25,56 +23,8 @@ import { grey } from "@mui/material/colors";
 import Button from "@mui/material/Button";
 import SwipeableDrawer from "@mui/material/SwipeableDrawer";
 import NotificationsIcon from "@mui/icons-material/Notifications";
-// prod management
-import ManageAccountsIcon from "@mui/icons-material/ManageAccounts";
-
-// order management
-import { ShoppingCart } from "@mui/icons-material";
-
-// add Home
-import AddHomeIcon from "@mui/icons-material/AddHome";
-// add category
-import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
-
-// add stock
-import ShowChartIcon from "@mui/icons-material/ShowChart";
-//  add land
-import LandscapeIcon from "@mui/icons-material/Landscape";
 import { useNavigate } from "react-router-dom";
-
-const data = [
-  {
-    name: "Order Management",
-    icon: <ShoppingCart fontSize="small" />,
-    link: "/order-management",
-  },
-  {
-    name: "Products Management",
-    icon: <ManageAccountsIcon fontSize="small" />,
-    link: "/products-management",
-  },
-  {
-    name: "Add Home",
-    icon: <AddHomeIcon fontSize="small" />,
-    link: "/add-brand",
-  },
-  {
-    name: "Add Category",
-    icon: <AddCircleOutlineIcon fontSize="small" />,
-    link: "/add-category",
-  },
-  {
-    name: "Add Land",
-    icon: <LandscapeIcon fontSize="small" />,
-    link: "/add-sub-category",
-  },
-  {
-    name: "Add Stock",
-    icon: <ShowChartIcon fontSize="small" />,
-    link: "/add-product",
-  },
-];
-
+import { dashboardData } from "./DashboardData";
 const drawerBleeding = 56;
 
 const Root = styled("div")(({ theme }) => ({
@@ -99,48 +49,8 @@ const Puller = styled(Box)(({ theme }) => ({
   left: "calc(50% - 15px)",
 }));
 
-// const Search = styled("div")(({ theme }) => ({
-//   position: "relative",
-//   borderRadius: theme.shape.borderRadius,
-//   backgroundColor: alpha(theme.palette.common.white, 0.15),
-//   "&:hover": {
-//     backgroundColor: alpha(theme.palette.common.white, 0.25),
-//   },
-//   marginLeft: 0,
-//   width: "100%",
-//   [theme.breakpoints.up("sm")]: {
-//     marginLeft: theme.spacing(1),
-//     width: "auto",
-//   },
-// }));
-
-// const SearchIconWrapper = styled("div")(({ theme }) => ({
-//   padding: theme.spacing(0, 2),
-//   height: "100%",
-//   position: "absolute",
-//   pointerEvents: "none",
-//   display: "flex",
-//   alignItems: "center",
-//   justifyContent: "center",
-// }));
-
-// const StyledInputBase = styled(InputBase)(({ theme }) => ({
-//   color: "inherit",
-//   "& .MuiInputBase-input": {
-//     padding: theme.spacing(1, 1, 1, 0),
-//     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
-//     transition: theme.transitions.create("width"),
-//     width: "100%",
-//     [theme.breakpoints.up("sm")]: {
-//       width: "12ch",
-//       "&:focus": {
-//         width: "20ch",
-//       },
-//     },
-//   },
-// }));
-
 const AdminNavBar = ({ window, setMode }) => {
+  const theme = useTheme();
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen) => () => {
@@ -154,8 +64,6 @@ const AdminNavBar = ({ window, setMode }) => {
   // This is used only for the example
   const container =
     window !== undefined ? () => window().document.body : undefined;
-
-  const theme = useTheme();
 
   const mobileMenuId = "primary-search-account-menu-mobile";
   const navigate = useNavigate();
@@ -221,23 +129,19 @@ const AdminNavBar = ({ window, setMode }) => {
           >
             <div className="w-[100%] h-[100%] mt-[56px] md:mt-[63px] xl:mt-[56px] p-1">
               <List>
-                {data.map((val, index) => (
+                {dashboardData.map((val, index) => (
                   <ListItem key={index} disablePadding>
                     <ListItemButton
                       onClick={() => {
                         navigate(`/admin${val.link}`);
-                        setOpen(false)
+                        setOpen(false);
                       }}
                     >
-                      {/* <ListItemIcon className="bg-lime-400"> */}
                       <div className="mr-2">{val.icon}</div>
 
-                      {/* </ListItemIcon> */}
                       <Typography variant="p" component="p" color="inherit">
-                        {" "}
                         {val.name}
                       </Typography>
-                      {/* <ListItemText primary= sx={{ml:1,py:0}}/> */}
                     </ListItemButton>
                   </ListItem>
                 ))}
@@ -269,78 +173,6 @@ const AdminNavBar = ({ window, setMode }) => {
               </Typography>
             </Link>
           </Box>
-
-          {/* <Box
-            sx={{
-              display: {
-                xs: "none",
-                md: "flex",
-                justifyContent: "space-around",
-              },
-            }}
-            className="items-center"
-          >
-            <Link href={"/buy"} underline="none" color="inhiret">
-              <MenuItem className="flex items-center">
-                <p>Buy </p>
-              </MenuItem>
-            </Link>
-
-            <Link href={"/rent"} underline="none" color="inhiret">
-              <MenuItem className="flex items-center">
-                <p>Rent admin </p>
-              </MenuItem>
-            </Link>
-
-            <Link href={"/sell"} underline="none" color="inhiret">
-              <MenuItem className="flex items-center">
-                <p>Sell </p>
-              </MenuItem>
-            </Link>
-          </Box> */}
-
-          {/* 2 */}
-          {/* <Search className="bg-lime-500">
-            <SearchIconWrapper>
-              <SearchIcon />
-            </SearchIconWrapper>
-            <StyledInputBase
-              placeholder="Search…"
-              inputProps={{ "aria-label": "search" }}
-            />
-          </Search> */}
-          {/* 
-          <Box
-            sx={{
-              display: {
-                xs: "none",
-                md: "flex",
-                justifyContent: "space-around",
-              },
-            }}
-            className="items-center"
-          >
-            <Link href={"/contact"} underline="none" color="inhiret">
-              <MenuItem className="flex items-center">
-                <p>Contact </p>
-              </MenuItem>
-            </Link>
-            <Link href={"/about"} underline="none" color="inhiret">
-              <MenuItem className="flex items-center">
-                <p>About </p>
-              </MenuItem>
-            </Link>
-            <Link href={"/help"} underline="none" color="inhiret">
-              <MenuItem className="flex items-center">
-                <p>Help </p>
-              </MenuItem>
-            </Link>
-            <Link href={"/favorites"} underline="none" color="inhiret">
-              <MenuItem className="flex items-center">
-                <p>Favorites </p>
-              </MenuItem>
-            </Link>
-          </Box> */}
           {/* 3 */}
           <Box
             sx={{
@@ -352,30 +184,6 @@ const AdminNavBar = ({ window, setMode }) => {
             }}
             className="items-center"
           >
-            {/* <Link href={"/order"} underline="none" color="inhiret">
-              <IconButton
-                size="large"
-                aria-label="show 4 new mails"
-                color="inherit"
-              >
-                <Badge badgeContent={4} color="error">
-                  <ShoppingCart />
-                </Badge>
-              </IconButton>
-            </Link> */}
-
-            {/* <IconButton
-              size="large"
-              edge="end"
-              aria-label="account of current user"
-              aria-controls={menuId}
-              aria-haspopup="true"
-              onClick={handleProfileMenuOpen}
-              color="inherit"
-            >
-              <AccountCircle />
-            </IconButton> */}
-
             <Box sx={{ display: { xs: "none", md: "flex" } }}>
               <IconButton sx={{ ml: 1 }}>
                 <Badge badgeContent={2} color="error">
@@ -390,6 +198,9 @@ const AdminNavBar = ({ window, setMode }) => {
                     theme.palette.mode === "dark" ? "light" : "dark"
                   );
                   setMode(theme.palette.mode === "light" ? "dark" : "light");
+                  if (typeof window !== "undefined") {
+                    window.location.reload();
+                  }
                 }}
                 color="inherit"
               >
@@ -410,6 +221,7 @@ const AdminNavBar = ({ window, setMode }) => {
                 <NotificationsIcon />
               </Badge>
             </IconButton>
+
             <IconButton
               sx={{ ml: 1 }}
               onClick={() => {
