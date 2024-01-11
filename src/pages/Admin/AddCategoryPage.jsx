@@ -4,11 +4,13 @@ import Typography from "@mui/material/Typography";
 
 const AddCategoryPage = () => {
   return (
-    <div>
+    <div className="w-[100%]">
       <Typography variant="body1" color="inherit">
-        Add Category Page
+        Create Category
       </Typography>
-      <AddCategory />
+      <div className="flex justify-center items-center mt-4">
+        <AddCategory />
+      </div>
     </div>
   );
 };

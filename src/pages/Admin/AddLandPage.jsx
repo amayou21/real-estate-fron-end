@@ -4,11 +4,13 @@ import Typography from "@mui/material/Typography";
 
 const AddLandPage = () => {
   return (
-    <div>
+    <div className="w-[100%]">
       <Typography variant="body1" color="inherit">
-        Add Land Page
+        Create Land 
       </Typography>
-      <AddLand />
+      <div className="flex justify-center items-center mt-4">
+        <AddLand />
+      </div>
     </div>
   );
 };

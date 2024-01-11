@@ -4,11 +4,13 @@ import Typography from "@mui/material/Typography";
 
 const AddStockPage = () => {
   return (
-    <div>
+    <div className="w-[100%]">
       <Typography variant="body1" color="inherit">
-        Add Seock Page
+        Create Seock
       </Typography>
-      <AddSeock />
+      <div className="flex justify-center items-center mt-4">
+        <AddSeock />
+      </div>
     </div>
   );
 };

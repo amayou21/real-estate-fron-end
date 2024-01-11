@@ -27,14 +27,14 @@ export const dashboardData = [
         link: "/products-management",
     },
     {
-        name: "Add Home",
-        icon: <AddHomeIcon fontSize="small" />,
-        link: "/add-home",
-    },
-    {
         name: "Add Category",
         icon: <AddCircleOutlineIcon fontSize="small" />,
         link: "/add-category",
+    },
+    {
+        name: "Add Home",
+        icon: <AddHomeIcon fontSize="small" />,
+        link: "/add-home",
     },
     {
         name: "Add Land",
