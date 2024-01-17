@@ -1,3 +1,6 @@
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
 import {
   Box,
   Button,
@@ -6,15 +9,16 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import React from "react";
+
 import CloudUploadIcon from "@mui/icons-material/CloudUpload";
 import { styled } from "@mui/material/styles";
 import AddIcon from "@mui/icons-material/Add";
 import Dialog from "@mui/material/Dialog";
-import DialogActions from "@mui/material/DialogActions";
-import DialogTitle from "@mui/material/DialogTitle";
 import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
+import CancelIcon from "@mui/icons-material/Cancel";
+import AddCategory from "./AddCategory";
+import { AllCategory } from "../../Redux/actions/categoryAction";
 
 const VisuallyHiddenInput = styled("input")({
   clip: "rect(0 0 0 0)",
@@ -29,9 +33,13 @@ const VisuallyHiddenInput = styled("input")({
 });
 
 const AddHome = () => {
+  const dispatch = useDispatch();
   const [open, setOpen] = React.useState(false);
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  const res = useSelector((val) => val.allCategory.category);
+  const categories = res.data ? res.data.data : [];
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -40,6 +48,10 @@ const AddHome = () => {
   const handleClose = () => {
     setOpen(false);
   };
+
+  useEffect(() => {
+    dispatch(AllCategory());
+  }, [open]);
 
   return (
     <>
@@ -50,26 +62,14 @@ const AddHome = () => {
           onClose={handleClose}
           aria-labelledby="responsive-dialog-title"
         >
-          <DialogTitle id="customized-dialog-title">
-            Create Category
-          </DialogTitle>
-          <div component="form" className="px-20">
-            <TextField
-              required
-              id="outlined-required"
-              label="Name"
-              placeholder="Name"
-            />
+          <div className="px-20 py-5 relative">
+            <AddCategory />
+            <div className="absolute top-0 right-0">
+              <IconButton onClick={handleClose}>
+                <CancelIcon color="error" />
+              </IconButton>
+            </div>
           </div>
-
-          <DialogActions>
-            <Button autoFocus onClick={handleClose}>
-              Cancel
-            </Button>
-            <Button onClick={handleClose} autoFocus>
-              Crate
-            </Button>
-          </DialogActions>
         </Dialog>
       </React.Fragment>
 
@@ -100,38 +100,49 @@ const AddHome = () => {
             </IconButton>
           </div>
           <div className="grid grid-cols-1 xl:grid-cols-2 md:grid-cols-2">
+            <TextField required id="title" label="Title" placeholder="Title" />
+
             <TextField
               required
-              id="outlined-required"
-              label="Title"
-              placeholder="Title"
-            />
-            <TextField
-              required
-              id="outlined-required"
+              id="statuse"
               label="Statuse"
               placeholder="statuse"
             />
 
-            {/* <TextField
-            required
-            id="outlined-required"
-            label="Category"
-            placeholder="Category"
-          /> */}
-
             <TextField
-              id="outlined-select-currency"
+              required
+              id="Category"
               select
               label="Category"
               placeholder="Select Category"
-              defaultValue="Big House"
+              defaultValue="select"
             >
-              <MenuItem value="big-bouse">Big House</MenuItem>
-              <MenuItem value="home">Home</MenuItem>
+              <MenuItem value="select">
+                <p className="py-3"></p>
+              </MenuItem>
+              {categories
+                ? categories.length > 0
+                  ? categories.reverse().map((val, index) => {
+                      return (
+                        <MenuItem
+                          key={val._id}
+                          value={val._id}
+                          className={`${
+                            index === 0 ? "text-emerald-400" : null
+                          }`}
+                        >
+                          {val.name}
+                        </MenuItem>
+                      );
+                    })
+                  : null
+                : null}
               <MenuItem onClick={handleClickOpen}>
                 <div className="flex justify-between w-[100%]">
-                  Create Category <AddIcon />
+                  <Typography variant="p" color="primary">
+                    Create Category
+                  </Typography>
+                  <AddIcon color="primary" />
                 </div>
               </MenuItem>
             </TextField>
@@ -139,50 +150,56 @@ const AddHome = () => {
             <TextField
               required
               type="number"
-              id="outlined-required"
+              id="price"
               label="Price"
               placeholder="Price"
             />
+
             <TextField
               required
-              id="outlined-required"
+              id="location"
               label="Location"
               placeholder="Location"
             />
+
             <TextField
               required
               type="number"
-              id="outlined-required"
+              id="area"
               label="Area"
               placeholder="Area"
             />
+
             <TextField
               required
               type="number"
-              id="outlined-required"
+              id="bedrooms"
               label="Bedrooms"
               placeholder="Bedrooms"
             />
+
             <TextField
               required
               type="number"
-              id="outlined-required"
+              id="bathrooms"
               label="Bathrooms"
               placeholder="Bathrooms"
             />
           </div>
         </Box>
+
         <Box className="px-2 mt-2">
           <TextField
             required
             multiline
             fullWidth
-            id="outlined-multiline-flexible"
+            id="description"
             label="Description"
             placeholder="Description"
             variant="outlined"
           />
         </Box>
+
         <Box className="px-2 mt-2 flex justify-end">
           <Button variant="contained">add</Button>
         </Box>

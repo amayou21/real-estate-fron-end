@@ -62,17 +62,17 @@ const AddCategoryHook = () => {
             setOpen(false);
             setImage(image);
             setName(name);
-            if (res) {
-                if (res.status) {
-                    if (res.status === 201) {
-                        setLoading(false);
-                        UseNotification("created successfuly!", "success");
-                    } else {
-                        // console.log(res.data.errors[0].msg);
-                        setLoading(false);
-                        UseNotification(res.data.errors[0].msg, "error");
-                    }
+            if (res.status) {
+                // if (res.status) {
+                if (res.status === 201) {
+                    setLoading(false);
+                    UseNotification("created successfuly!", "success");
+                } else {
+                    // console.log(res.data.errors[0].msg);
+                    setLoading(false);
+                    UseNotification(res.data.errors[0].msg, "error");
                 }
+                // }
             }
         } else {
             setOpen(true);

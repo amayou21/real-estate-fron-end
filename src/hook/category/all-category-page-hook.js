@@ -1,16 +1,6 @@
-import React, { useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { AllCategory } from '../../Redux/actions/categoryAction';
-
-
-
-
-
-
-
-
-
-
 
 
 const AllCategoryPageHook = (limit) => {
@@ -28,7 +18,6 @@ const AllCategoryPageHook = (limit) => {
     const loading = useSelector((state) => state.allCategory.loading);
     const res = categories.data ? categories.data : []
     const pageCount = res.paginationResult ? res.paginationResult.numberOfPages : null;
-    //  res.data ? res.data.paginationResult.numberOfPages : 0;
 
     return [res, getPage, pageCount, loading]
 }
