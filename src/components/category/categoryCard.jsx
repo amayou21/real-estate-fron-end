@@ -1,33 +1,36 @@
 import * as React from "react";
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import img1 from "../../images/img1.jpg";
 import { useTheme } from "@emotion/react";
-import { Button } from "@mui/material";
-import ReadMoreSharpIcon from "@mui/icons-material/ReadMoreSharp";
+import { Typography } from "@mui/material";
 import KeyboardTabIcon from "@mui/icons-material/KeyboardTab";
-const CategoryCard = ({ title }) => {
+import Card from "@mui/material/Card";
+import CardContent from "@mui/material/CardContent";
+import CardMedia from "@mui/material/CardMedia";
+import { CardActionArea } from "@mui/material";
+
+const CategoryCard = ({ title, image }) => {
   const theme = useTheme();
   return (
-    <Paper
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-      }}
-    >
-      <img
-        src={img1}
-        style={{ width: "100%", height: "80%" }}
-        alt="Your Image"
-      />
-      <p className="ml-2 mr-2">{title}</p>
-
-      <KeyboardTabIcon
-        className={
-          theme.palette.mode === "dark" ? "text-red-300" : "text-sky-500"
-        }
-      />
-    </Paper>
+    <Card sx={{ maxWidth: 345 }}>
+      <CardActionArea>
+        <CardMedia
+          sx={{ maxHeight: 120 }}
+          component="img"
+          height="80px"
+          image={image}
+          alt="green iguana"
+        />
+        <CardContent className="flex">
+          <Typography gutterBottom variant="p" component="div" className="pr-2">
+            {title}
+          </Typography>
+          <KeyboardTabIcon
+            className={
+              theme.palette.mode === "dark" ? "text-red-300" : "text-sky-500"
+            }
+          />
+        </CardContent>
+      </CardActionArea>
+    </Card>
   );
 };
 

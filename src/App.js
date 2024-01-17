@@ -22,6 +22,7 @@ import AddHomePage from "./pages/Admin/AddHomePage";
 import AddCategoryPage from "./pages/Admin/AddCategoryPage";
 import AddLandPage from "./pages/Admin/AddLandPage";
 import AddSeockPage from "./pages/Admin/AddStockPage";
+import AllCategoryPage from "./pages/AllCategoryPage/AllCategoryPage";
 
 function App() {
 
@@ -59,7 +60,8 @@ function App() {
             <Route path="/land/:id" element={<LandDetailsContainer />} />
             <Route path="/favorites" element={<Favorites />} />
             <Route path="/order" element={<OrdersPage />} />
-
+            <Route path="/more-category" element={<AllCategoryPage />} />
+            
             {/* User auth */}
             <Route path="/login" element={<LoginPage />} />
             <Route path="/register" element={<RegisterPage />} />
