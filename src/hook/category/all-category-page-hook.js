@@ -14,40 +14,6 @@ import { AllCategory } from '../../Redux/actions/categoryAction';
 
 
 const AllCategoryPageHook = (limit) => {
-
-
-
-
-
-
-
-
-
-    const مُـعاويَـة = () => {
-        return "مُـعاويَـة";
-    }
-    useEffect(() => {
-        console.log(مُـعاويَـة());
-    });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     const dispatch = useDispatch();
 
     useEffect(() => {
