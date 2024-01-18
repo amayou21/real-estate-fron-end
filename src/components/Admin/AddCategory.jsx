@@ -42,6 +42,10 @@ const AddCategory = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    if (!navigator.onLine) {
+      UseNotification("you're Offline", "error");
+      return;
+    }
     if (!name || !image) {
       setLoading(false);
       UseNotification("category name and image are required", "warning");

@@ -49,7 +49,13 @@ const AddHome = () => {
     setOpen(false);
   };
 
+  const handleChange = (e) => {
+    e.preventDefault();
+    console.log(e);
+  };
+
   useEffect(() => {
+   
     dispatch(AllCategory());
   }, [open]);
 
@@ -110,6 +116,9 @@ const AddHome = () => {
             />
 
             <TextField
+              onChange={(e) => {
+                handleChange(e);
+              }}
               required
               id="Category"
               select
@@ -119,6 +128,7 @@ const AddHome = () => {
             >
               <MenuItem value="select">
                 <p className="py-3"></p>
+                
               </MenuItem>
               {categories
                 ? categories.length > 0
